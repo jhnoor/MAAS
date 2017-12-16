@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  nginx:
+    restart: always
+    build: ./nginx
+    container_name: nginx_maas
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - webserver_network
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./src/frontend:/static/angular:ro # read only: ro
+      - ./src/backend:/django
+
+  django:
+    restart: always
+    build: ./src/backend
+    container_name: django_maas
+    expose:
+      - "8000"
+    networks:
+      - webserver_network
+    volumes:
+      - ./src/backend:/django
+
+volumes:
+  django_volume:
+  static_volume:
+
+networks:
+  webserver_network:
+    driver: bridge

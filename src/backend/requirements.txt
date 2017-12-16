@@ -1,0 +1,7 @@
+Django==2.0.0
+djangorestframework==3.7.3
+uWSGI==2.0.15
+psycopg2==2.7.3
+docutils==0.12
+Markdown==2.6.7
+requests==2.13.0

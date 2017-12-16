@@ -1,2 +1,1 @@
-# YetAnotherTodoList
-# MAAS
+# Mirror As A Service. MAAS
